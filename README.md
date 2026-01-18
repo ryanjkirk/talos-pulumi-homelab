@@ -35,7 +35,8 @@ Kubernetes cluster using Talos Linux on KVM/libvirt, managed by Pulumi via pytho
 
 ## Setup
 
-`./install.sh`
+Read `./install.sh` and change the image for your environment. This script is not designed for
+various environemnts, is not idempotent, and should be run with care.
 
 Copy `sample-cluster-config.yaml` to `cluster-config.yaml` and edit as necessary.
 

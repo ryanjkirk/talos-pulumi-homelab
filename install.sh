@@ -1,3 +1,5 @@
+#!/bin/bash
+
 image="https://factory.talos.dev/image/ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515/v1.12.1/metal-amd64.qcow2"
 disk_size="10G"
 
@@ -17,7 +19,6 @@ curl -fsSL https://get.pulumi.com | sh
 # configure pulumi for libvirt
 pulumi config set libvirt:uri qemu:///system
 pip install pulumi-libvirt
-pip install --user pulumiverse-talos
 
 # initialize
 pulumi login --local
