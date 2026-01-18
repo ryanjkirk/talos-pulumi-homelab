@@ -1,6 +1,6 @@
 # Talos via Pulumi
 
-Local Kubernetes cluster using Talos Linux on KVM/libvirt, managed with Pulumi.
+Local Kubernetes cluster using Talos Linux on KVM/libvirt, managed by Pulumi.
 
 ## Prerequisites
 
@@ -24,10 +24,10 @@ Local Kubernetes cluster using Talos Linux on KVM/libvirt, managed with Pulumi.
 
 ### Scripts
 - `install.sh` - Initial setup script
-- `configure-talos-cluster.sh` - Configures Talos nodes (applies configs, handles cert rotation)
-- `troubleshoot-virsh.sh` - Debugging helper for virsh commands
+- `configure-talos-cluster.sh` - Configure Talos nodes (applies configs, handles cert rotation)
+- `generate-firewalld-rules.sh` - Allow remote access to these NAT'd VMs
 
-### Generated Files (not committed)
+### Generated Files
 - `controlplane.yaml` - Talos control plane node configuration
 - `worker.yaml` - Talos worker node configuration
 - `talosconfig` - Talos CLI authentication config
@@ -48,7 +48,9 @@ pulumi up
 
 ## Notes
 
-This uses the default network which is NAT. You may want to use your LAN DHCP. Additional configuration may be required.
+This uses the default network which is NAT. For this you will need to run the firewalld script.
+
+You may want to use your LAN's DHCP and a bridge network instead.
 
 ```bash
 cat > /tmp/macvtap-network.xml << 'EOF'
@@ -66,3 +68,5 @@ sudo virsh net-autostart macvtap-net
 ```
 
 Set your network to `macvtap-net`.
+
+Additional configuration may be required.
