@@ -1,4 +1,7 @@
 #!/bin/bash
+# post-pulumi talosctl cluster configuration
+# this script is idempotent and can be re-run
+
 set -e
 
 # read counts from cluster-config.yaml
@@ -48,7 +51,7 @@ for i in `seq -f "%02g" 1 $ctr_count`; do
   fi
   
   echo "  Verifying:"
-  for attempt in 1 2 3 4 5 6 7 8 9 10; do
+  for attempt in {1..10}; do
     if talosctl version --nodes $ip --short 2>/dev/null; then
       break
     fi
@@ -70,7 +73,7 @@ for i in `seq -f "%02g" 1 $wrk_count`; do
   fi
   
   echo "  Verifying:"
-  for attempt in 1 2 3 4 5 6 7 8 9 10; do
+  for attempt in {1..10}; do
     if talosctl version --nodes $ip --short 2>/dev/null; then
       break
     fi
@@ -80,7 +83,7 @@ for i in `seq -f "%02g" 1 $wrk_count`; do
 done
 
 echo ""
-echo "Configuration complete. If this is first setup, bootstrap the cluster with:"
+echo "Configuration complete. ONLY if this is first setup, bootstrap the cluster with:"
 echo "  talosctl bootstrap --nodes $control_plane_ip"
 echo ""
 echo "Then check cluster health with:"
@@ -92,7 +95,7 @@ echo ""
 echo "Get kubeconfig:"
 echo '  talosctl kubeconfig --nodes `pulumi stack output ctr01_ip`'
 echo ""
-echo "After cluster is healthy, label worker nodes with:"
+echo "After cluster is healthy, label worker nodes if desired:"
 echo ""
 echo "  kubectl get nodes -l '!node-role.kubernetes.io/control-plane' --no-headers -o custom-columns=NAME:.metadata.name | while read node; do"
 echo "    kubectl label node \$node node-role.kubernetes.io/worker=worker --overwrite"

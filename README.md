@@ -24,13 +24,14 @@ Local Kubernetes cluster using Talos Linux on KVM/libvirt, managed with Pulumi.
 
 ### Scripts
 - `install.sh` - Initial setup script
-- `config-talos.sh` - Configures Talos nodes (applies configs, handles cert rotation)
+- `configure-talos-cluster.sh` - Configures Talos nodes (applies configs, handles cert rotation)
 - `troubleshoot-virsh.sh` - Debugging helper for virsh commands
 
 ### Generated Files (not committed)
 - `controlplane.yaml` - Talos control plane node configuration
 - `worker.yaml` - Talos worker node configuration
 - `talosconfig` - Talos CLI authentication config
+- `Pulumi.<cluster-name>.yaml` - Pulumi stack configuration file
 
 ## Setup
 
@@ -42,7 +43,7 @@ Copy `sample-cluster-config.yaml` to `cluster-config.yaml` and edit as necessary
 
 ```bash
 pulumi up
-./config-talos.sh
+./configure-talos-cluster.sh
 ```
 
 ## Notes
