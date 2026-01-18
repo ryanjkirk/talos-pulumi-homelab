@@ -1,0 +1,5 @@
+controlplane.yaml
+talosconfig
+worker.yaml
+Pulumi.*.yaml
+*cache*

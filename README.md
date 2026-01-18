@@ -36,6 +36,8 @@ Local Kubernetes cluster using Talos Linux on KVM/libvirt, managed with Pulumi.
 
 `./install.sh`
 
+Copy `sample-cluster-config.yaml` to `cluster-config.yaml` and edit as necessary.
+
 ## Usage
 
 ```bash

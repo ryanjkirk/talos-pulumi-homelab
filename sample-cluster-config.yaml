@@ -1,0 +1,14 @@
+cluster_name: talos01
+talos_image: /var/lib/libvirt/images/metal-amd64.qcow2
+pool: default
+network: default
+
+node_types:
+  ctr:
+    count: 1
+    memory: 2048
+    vcpu: 2
+  wrk:
+    count: 1
+    memory: 2048
+    vcpu: 2
