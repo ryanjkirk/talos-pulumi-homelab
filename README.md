@@ -1,6 +1,6 @@
 # Talos via Pulumi
 
-Local Kubernetes cluster using Talos Linux on KVM/libvirt, managed by Pulumi.
+Kubernetes cluster using Talos Linux on KVM/libvirt, managed by Pulumi via python.
 
 ## Prerequisites
 
