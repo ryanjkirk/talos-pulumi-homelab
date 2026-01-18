@@ -1,0 +1,3 @@
+name: talos-lab
+runtime: python
+description: Talos Kubernetes lab with kvm 
