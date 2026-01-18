@@ -1,6 +1,5 @@
 import pulumi
 import pulumi_libvirt as libvirt
-import pulumiverse_talos as talos
 import yaml
 
 with open("cluster-config.yaml") as f:

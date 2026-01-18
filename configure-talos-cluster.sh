@@ -95,7 +95,7 @@ echo ""
 echo "Get kubeconfig:"
 echo '  talosctl kubeconfig --nodes `pulumi stack output ctr01_ip`'
 echo ""
-echo "After cluster is healthy, label worker nodes if desired:"
+echo "Label nodes as 'worker' if desired:"
 echo ""
 echo "  kubectl get nodes -l '!node-role.kubernetes.io/control-plane' --no-headers -o custom-columns=NAME:.metadata.name | while read node; do"
 echo "    kubectl label node \$node node-role.kubernetes.io/worker=worker --overwrite"
